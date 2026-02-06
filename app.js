@@ -1,12 +1,11 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const morgan = require('morgan');
+
 
 const app = express();
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
-app.use(morgan('combined', { stream: accessLogStream }));
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
